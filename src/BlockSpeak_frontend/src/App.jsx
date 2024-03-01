@@ -23,7 +23,8 @@ function App() {
         <input id="name" alt="Name" type="text" />
         <button type="submit">Click Me!</button>
       </form>
-      <section id="greeting">{greeting}</section>
+      <section id="greeting" className='text-red-600'>{greeting}</section>
+      <h1 className='text-red-600'>Hello</h1>
     </main>
   );
 }
