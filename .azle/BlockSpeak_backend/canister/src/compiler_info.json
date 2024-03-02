@@ -1,1 +1,1 @@
-{"canister_methods":{"queries":[{"name":"greet","composite":false}],"updates":[],"callbacks":{}}}
+{"canister_methods":{"queries":[{"name":"greet","composite":false},{"name":"getPrincipal","composite":false},{"name":"printPrincipal","composite":false},{"name":"whoami","composite":true}],"updates":[],"callbacks":{}}}

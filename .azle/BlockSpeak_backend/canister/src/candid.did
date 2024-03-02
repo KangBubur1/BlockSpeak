@@ -1,3 +1,6 @@
 service: () -> {
+    getPrincipal: () -> (principal) query;
     greet: (text) -> (text) query;
+    printPrincipal: (principal) -> (principal) query;
+    whoami: (principal) -> (principal) query;
 }

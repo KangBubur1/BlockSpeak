@@ -16,7 +16,6 @@ export async function getPrincipalText() {
     return (await getPrincipal()).toText();
 }
 
-
 export async function isAuthenticated() {
     try {
         const authClient = await getAuthClient();

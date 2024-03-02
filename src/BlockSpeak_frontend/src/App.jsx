@@ -25,7 +25,7 @@ function App() {
           >
             Login
           </Button>
-      
+
     </main>
   );
 }
@@ -52,6 +52,4 @@ function App() {
 
  */
 
-
-      
 export default App;

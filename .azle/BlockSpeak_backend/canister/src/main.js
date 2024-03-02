@@ -101084,6 +101084,20 @@ var src_default = Canister({
         text
     ], text, (name)=>{
         return `Hello, ${name}!`;
+    }),
+    getPrincipal: query([], Principal3, ()=>{
+        return Principal3.fromText("rrkah-fqaaa-aaaaa-aaaaq-cai");
+    }),
+    printPrincipal: query([
+        Principal3
+    ], Principal3, (principal)=>{
+        console.log(typeof principal);
+        return principal;
+    }),
+    whoami: query([
+        Principal3
+    ], Principal3, async (caller2)=>{
+        return caller2;
     })
 });
 // <stdin>
