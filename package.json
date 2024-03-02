@@ -9,11 +9,16 @@
     "prebuild": "npm run prebuild --workspaces --if-present",
     "pretest": "npm run prebuild --workspaces --if-present",
     "start": "npm start --workspaces --if-present",
-    "test": "npm test --workspaces --if-present"
+    "test": "npm test --workspaces --if-present",
+    "print-dfx-ii": "echo local Internet Identity: http://$(dfx canister id internet_identity).localhost:8000"
   },
   "type": "module",
   "workspaces": [
     "src/BlockSpeak_backend",
     "src/BlockSpeak_frontend"
-  ]
+  ],
+  "dependencies": {
+    "@dfinity/auth-client": "^1.0.1",
+    "react-bootstrap": "^2.10.1"
+  }
 }

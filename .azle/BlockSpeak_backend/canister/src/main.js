@@ -30,7 +30,7 @@ function _extends() {
     };
     return _extends.apply(this, arguments);
 }
-var _class, _class1, _class2, _class3, _class4, _class5;
+var _class, _class1, _class2, _class3, _class4, _class5, _class6, _class7, _class8, _class9, _class10, _class11;
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -98908,8 +98908,101 @@ function Some(value) {
 var None = {
     None: null
 };
+function Opt2(t) {
+    return new AzleOpt(t);
+}
+var AzleOpt = (_class1 = class {
+    toBytes(data) {
+        return encode3(this, data);
+    }
+    fromBytes(bytes2) {
+        return decode3(this, bytes2);
+    }
+    getIdl(parents) {
+        return idl_exports.Opt(toIdl(this.innerType, parents));
+    }
+    constructor(t){
+        this.tsType = {};
+        this._azleKind = "AzleOpt";
+        this.innerType = t;
+    }
+}, _class1._azleKind = "AzleOpt", _class1);
+// node_modules/azle/src/lib/candid/types/constructed/record.ts
+function Record2(obj) {
+    return _extends({}, obj, {
+        tsType: {},
+        toBytes (data) {
+            return encode3(this, data);
+        },
+        fromBytes (bytes2) {
+            return decode3(this, bytes2);
+        },
+        getIdl (parents) {
+            return idl_exports.Record(toIdlMap(obj, parents));
+        }
+    });
+}
+// node_modules/azle/src/lib/candid/types/constructed/tuple.ts
+var AzleTuple = (_class2 = class {
+    toBytes(data) {
+        return encode3(this, data);
+    }
+    fromBytes(bytes2) {
+        return decode3(this, bytes2);
+    }
+    getIdl(parents) {
+        const idls = this.innerTypes.map((value)=>{
+            return toIdl(value, parents);
+        });
+        return idl_exports.Tuple(...idls);
+    }
+    constructor(t){
+        this.tsType = {};
+        this._azleKind = "AzleTuple";
+        this.innerTypes = t;
+    }
+}, _class2._azleKind = "AzleTuple", _class2);
+function Tuple2(...types) {
+    return new AzleTuple(types);
+}
+// node_modules/azle/src/lib/candid/types/constructed/vec.ts
+var AzleVec = (_class3 = class {
+    toBytes(data) {
+        return encode3(this, data);
+    }
+    fromBytes(bytes2) {
+        return decode3(this, bytes2);
+    }
+    getIdl(parents) {
+        return idl_exports.Vec(toIdl(this.innerType, parents));
+    }
+    constructor(t){
+        this.tsType = {};
+        this._azleKind = "AzleVec";
+        this.innerType = t;
+    }
+}, _class3._azleKind = "AzleVec", _class3);
+function Vec2(t) {
+    return new AzleVec(t);
+}
+// node_modules/azle/src/lib/candid/types/primitive/ints/int.ts
+var AzleInt = (_class4 = class {
+    static toBytes(data) {
+        return encode3(this, data);
+    }
+    static fromBytes(bytes2) {
+        return decode3(this, bytes2);
+    }
+    static getIdl() {
+        return idl_exports.Int;
+    }
+    constructor(){
+        this._azleKind = "AzleInt";
+    }
+}, _class4._azleKind = "AzleInt", _class4);
+var int = AzleInt;
 // node_modules/azle/src/lib/candid/types/primitive/nats/nat.ts
-var AzleNat = (_class1 = class {
+var AzleNat = (_class5 = class {
     static toBytes(data) {
         return encode3(this, data);
     }
@@ -98922,10 +99015,42 @@ var AzleNat = (_class1 = class {
     constructor(){
         this._azleKind = "AzleNat";
     }
-}, _class1._azleKind = "AzleNat", _class1);
+}, _class5._azleKind = "AzleNat", _class5);
 var nat = AzleNat;
+// node_modules/azle/src/lib/candid/types/primitive/nats/nat8.ts
+var AzleNat8 = (_class6 = class {
+    static toBytes(data) {
+        return encode3(this, data);
+    }
+    static fromBytes(bytes2) {
+        return decode3(this, bytes2);
+    }
+    static getIdl() {
+        return idl_exports.Nat8;
+    }
+    constructor(){
+        this._azleKind = "AzleNat8";
+    }
+}, _class6._azleKind = "AzleNat8", _class6);
+var nat8 = AzleNat8;
+// node_modules/azle/src/lib/candid/types/primitive/nats/nat32.ts
+var AzleNat32 = (_class7 = class {
+    static toBytes(data) {
+        return encode3(this, data);
+    }
+    static fromBytes(bytes2) {
+        return decode3(this, bytes2);
+    }
+    static getIdl() {
+        return idl_exports.Nat32;
+    }
+    constructor(){
+        this._azleKind = "AzleNat32";
+    }
+}, _class7._azleKind = "AzleNat32", _class7);
+var nat32 = AzleNat32;
 // node_modules/azle/src/lib/candid/types/primitive/null.ts
-var AzleNull = (_class2 = class {
+var AzleNull = (_class8 = class {
     static toBytes(data) {
         return encode3(this, data);
     }
@@ -98938,10 +99063,10 @@ var AzleNull = (_class2 = class {
     constructor(){
         this._azleKind = "AzleNull";
     }
-}, _class2._azleKind = "AzleNull", _class2);
+}, _class8._azleKind = "AzleNull", _class8);
 var Null2 = AzleNull;
 // node_modules/azle/src/lib/candid/types/primitive/text.ts
-var AzleText = (_class3 = class {
+var AzleText = (_class9 = class {
     static toBytes(data) {
         return encode3(this, data);
     }
@@ -98954,8 +99079,32 @@ var AzleText = (_class3 = class {
     constructor(){
         this._azleKind = "AzleText";
     }
-}, _class3._azleKind = "AzleText", _class3);
+}, _class9._azleKind = "AzleText", _class9);
 var text = AzleText;
+// node_modules/azle/src/lib/candid/types/reference/func.ts
+var modeToCandid = {
+    query: [
+        "query"
+    ],
+    oneway: [
+        "oneway"
+    ],
+    update: []
+};
+function Func2(paramCandidTypes, returnCandidTypes, mode) {
+    return {
+        tsType: {},
+        toBytes (data) {
+            return encode3(this, data);
+        },
+        fromBytes (bytes2) {
+            return decode3(this, bytes2);
+        },
+        getIdl (parents) {
+            return idl_exports.Func(toIdlArray(paramCandidTypes, parents), toIdlArray(returnCandidTypes, parents), modeToCandid[mode]);
+        }
+    };
+}
 // node_modules/azle/src/lib/candid/types/reference/service/canister_function/query_update.ts
 function createQueryMethods(canisterOptions) {
     return Object.entries(canisterOptions).filter(([_name, canisterMethod])=>canisterMethod.mode === "query").map(([methodName2, canisterMethod])=>createQueryMethod(methodName2, canisterMethod.async, canisterMethod.guard));
@@ -99110,7 +99259,7 @@ function Canister(canisterOptions) {
     return result;
 }
 // node_modules/azle/src/lib/candid/types/reference/principal.ts
-var Principal3 = (_class4 = class extends Principal {
+var Principal3 = (_class10 = class extends Principal {
     static toBytes(data) {
         return encode3(this, data);
     }
@@ -99120,7 +99269,7 @@ var Principal3 = (_class4 = class extends Principal {
     static getIdl(_parents) {
         return idl_exports.Principal;
     }
-}, _class4._azleKind = "Principal", _class4);
+}, _class10._azleKind = "Principal", _class10);
 // node_modules/azle/src/lib/candid/serde/decode.ts
 function decode3(candidType, data) {
     if (Array.isArray(candidType)) {
@@ -99191,19 +99340,19 @@ var AzleResult = class {
 function Result(ok, err) {
     return new AzleResult(ok, err);
 }
-((Result2)=>{
-    function Ok(value) {
+((Result3)=>{
+    function Ok2(value) {
         return {
             Ok: value
         };
     }
-    Result2.Ok = Ok;
-    function Err(value) {
+    Result3.Ok = Ok2;
+    function Err2(value) {
         return {
             Err: value
         };
     }
-    Result2.Err = Err;
+    Result3.Err = Err2;
 })(Result || (Result = {}));
 // node_modules/azle/src/lib/candid/serde/visitors/visit/variant/azle_variant.ts
 function visitAzleVariant(visitor, fields, data) {
@@ -99338,7 +99487,7 @@ function encodeMultiple(candidTypes, data) {
     return new Uint8Array(idl_exports.encode(idls, values));
 }
 // node_modules/azle/src/lib/candid/types/primitive/nats/nat64.ts
-var AzleNat64 = (_class5 = class {
+var AzleNat64 = (_class11 = class {
     static toBytes(data) {
         return encode3(this, data);
     }
@@ -99351,7 +99500,7 @@ var AzleNat64 = (_class5 = class {
     constructor(){
         this._azleKind = "AzleNat64";
     }
-}, _class5._azleKind = "AzleNat64", _class5);
+}, _class11._azleKind = "AzleNat64", _class11);
 var nat64 = AzleNat64;
 // node_modules/azle/src/lib/ic/call_raw.ts
 function callRaw(canisterId, method2, argsRaw, payment) {
@@ -100054,6 +100203,21 @@ function query(paramCandidTypes, returnCandidType, callback, methodArgs) {
         guard: methodArgs == null ? void 0 : methodArgs.guard
     };
 }
+// node_modules/azle/src/lib/canister_methods/methods/update.ts
+function update(paramCandidTypes, returnCandidType, callback, methodArgs) {
+    const finalCallback = callback === void 0 ? void 0 : (...args)=>{
+        var _methodArgs_manual;
+        executeMethod("update", args, callback, paramCandidTypes, returnCandidType, (_methodArgs_manual = methodArgs == null ? void 0 : methodArgs.manual) != null ? _methodArgs_manual : false);
+    };
+    return {
+        mode: "update",
+        callback: finalCallback,
+        paramCandidTypes,
+        returnCandidType,
+        async: callback === void 0 ? false : isAsync(callback),
+        guard: methodArgs == null ? void 0 : methodArgs.guard
+    };
+}
 // node_modules/@dfinity/principal/lib/esm/utils/base32.js
 var alphabet2 = "abcdefghijklmnopqrstuvwxyz234567";
 var lookupTable2 = /* @__PURE__ */ Object.create(null);
@@ -100385,13 +100549,11 @@ function getCrc322(buf) {
     return (crc ^ -1) >>> 0;
 }
 // node_modules/@dfinity/principal/lib/esm/utils/sha224.js
-var import_js_sha256 = __toESM(require_sha256());
 function sha2243(data) {
-    const shaObj = import_js_sha256.sha224.create();
-    shaObj.update(data);
-    return new Uint8Array(shaObj.array());
+    return sha224.create().update(new Uint8Array(data)).digest();
 }
 // node_modules/@dfinity/principal/lib/esm/index.js
+var JSON_KEY_PRINCIPAL2 = "__principal__";
 var SELF_AUTHENTICATING_SUFFIX2 = 2;
 var ANONYMOUS_SUFFIX2 = 4;
 var MANAGEMENT_CANISTER_PRINCIPAL_HEX_STR2 = "aaaaa-aa";
@@ -100422,6 +100584,8 @@ var Principal4 = class _Principal {
     static from(other) {
         if (typeof other === "string") {
             return _Principal.fromText(other);
+        } else if (Object.getPrototypeOf(other) === Uint8Array.prototype) {
+            return new _Principal(other);
         } else if (typeof other === "object" && other !== null && other._isPrincipal === true) {
             return new _Principal(other._arr);
         }
@@ -100431,12 +100595,19 @@ var Principal4 = class _Principal {
         return new this(fromHexString2(hex));
     }
     static fromText(text2) {
-        const canisterIdNoDash = text2.toLowerCase().replace(/-/g, "");
+        let maybePrincipal = text2;
+        if (text2.includes(JSON_KEY_PRINCIPAL2)) {
+            const obj = JSON.parse(text2);
+            if (JSON_KEY_PRINCIPAL2 in obj) {
+                maybePrincipal = obj[JSON_KEY_PRINCIPAL2];
+            }
+        }
+        const canisterIdNoDash = maybePrincipal.toLowerCase().replace(/-/g, "");
         let arr = decode4(canisterIdNoDash);
         arr = arr.slice(4, arr.length);
         const principal = new this(arr);
-        if (principal.toText() !== text2) {
-            throw new Error(`Principal "${principal.toText()}" does not have a valid checksum (original value "${text2}" may not be a valid Principal ID).`);
+        if (principal.toText() !== maybePrincipal) {
+            throw new Error(`Principal "${principal.toText()}" does not have a valid checksum (original value "${maybePrincipal}" may not be a valid Principal ID).`);
         }
         return principal;
     }
@@ -100473,6 +100644,14 @@ var Principal4 = class _Principal {
         return this.toText();
     }
     /**
+   * Serializes to JSON
+   * @returns {JsonnablePrincipal} a JSON object with a single key, {@link JSON_KEY_PRINCIPAL}, whose value is the principal as a string
+   */ toJSON() {
+        return {
+            [JSON_KEY_PRINCIPAL2]: this.toText()
+        };
+    }
+    /**
    * Utility method taking a Principal to compare against. Used for determining canister ranges in certificate verification
    * @param {Principal} other - a {@link Principal} to compare
    * @returns {'lt' | 'eq' | 'gt'} `'lt' | 'eq' | 'gt'` a string, representing less than, equal to, or greater than
@@ -100506,7 +100685,400 @@ var Principal4 = class _Principal {
         this._isPrincipal = true;
     }
 };
+// node_modules/azle/canisters/icrc/errors.ts
+var BadFee = Record2({
+    expected_fee: nat
+});
+var BadBurn = Record2({
+    min_burn_amount: nat
+});
+var InsufficientFunds = Record2({
+    balance: nat
+});
+var Duplicate = Record2({
+    duplicate_of: nat
+});
+var GenericError = Record2({
+    error_code: nat,
+    message: text
+});
+// node_modules/azle/canisters/icrc/icrc_1.ts
+var Timestamp = nat64;
+var Subaccount = blob;
+var Account = Record2({
+    owner: Principal3,
+    subaccount: Opt2(Subaccount)
+});
+var TransferArgs = Record2({
+    from_subaccount: Opt2(Subaccount),
+    to: Account,
+    amount: nat,
+    fee: Opt2(nat),
+    memo: Opt2(blob),
+    created_at_time: Opt2(Timestamp)
+});
+var CreatedInFuture = Record2({
+    ledger_time: Timestamp
+});
+var TransferError = Variant2({
+    BadFee,
+    BadBurn,
+    InsufficientFunds,
+    TooOld: Null2,
+    CreatedInFuture,
+    Duplicate,
+    TemporarilyUnavailable: Null2,
+    GenericError
+});
+var TransferResult = Variant2({
+    Ok: nat,
+    Err: TransferError
+});
+var Value = Variant2({
+    Nat: nat,
+    Int: int,
+    Text: text,
+    Blob: blob
+});
+// node_modules/azle/canisters/icrc/icrc_2.ts
+var ApproveArgs = Record2({
+    from_subaccount: Opt2(blob),
+    spender: Account,
+    amount: nat,
+    expected_allowance: Opt2(nat),
+    expires_at: Opt2(nat64),
+    fee: Opt2(nat),
+    memo: Opt2(blob),
+    created_at_time: Opt2(nat64)
+});
+var AllowanceChanged = Record2({
+    current_allowance: nat
+});
+var Expired = Record2({
+    ledger_time: nat64
+});
+var InsufficientAllowance = Record2({
+    allowance: nat
+});
+var ApproveError = Variant2({
+    BadFee,
+    InsufficientFunds,
+    AllowanceChanged,
+    Expired,
+    TooOld: Null2,
+    CreatedInFuture,
+    Duplicate,
+    TemporarilyUnavailable: Null2,
+    GenericError
+});
+var TransferFromArgs = Record2({
+    from: Account,
+    to: Account,
+    amount: nat,
+    fee: Opt2(nat),
+    memo: Opt2(blob),
+    created_at_time: Opt2(nat64)
+});
+var TransferFromError = Variant2({
+    BadFee,
+    BadBurn,
+    InsufficientFunds,
+    InsufficientAllowance,
+    TooOld: Null2,
+    CreatedInFuture,
+    Duplicate,
+    TemporarilyUnavailable: Null2,
+    GenericError
+});
+var AllowanceArgs = Record2({
+    account: Account,
+    spender: Account
+});
+var ApproveResult = Variant2({
+    Ok: nat,
+    Err: ApproveError
+});
+var TransferFromResult = Variant2({
+    Ok: nat,
+    Err: TransferFromError
+});
+var AllowanceResult = Record2({
+    allowance: nat,
+    expires_at: Opt2(nat64)
+});
+// node_modules/azle/canisters/icrc/index.ts
+var SupportedStandard = Record2({
+    name: text,
+    url: text
+});
+var ICRC = Canister({
+    icrc1_metadata: query([], Vec2(Tuple2(text, Value))),
+    icrc1_name: query([], text),
+    icrc1_symbol: query([], text),
+    icrc1_decimals: query([], nat8),
+    icrc1_fee: query([], nat),
+    icrc1_total_supply: query([], nat),
+    icrc1_minting_account: query([], Opt2(Account)),
+    icrc1_balance_of: query([
+        Account
+    ], nat),
+    icrc1_transfer: update([
+        TransferArgs
+    ], TransferResult),
+    icrc1_supported_standards: query([], Vec2(SupportedStandard)),
+    icrc2_approve: update([
+        ApproveArgs
+    ], ApproveResult),
+    icrc2_transfer_from: update([
+        TransferFromArgs
+    ], TransferFromResult),
+    icrc2_allowance: query([
+        AllowanceArgs
+    ], AllowanceResult)
+});
+// node_modules/azle/canisters/ledger/address/index.ts
+var import_js_sha256 = __toESM(require_sha256());
+// node_modules/azle/canisters/ledger/index.ts
+var Tokens = Record2({
+    e8s: nat64
+});
+var TimeStamp = Record2({
+    timestamp_nanos: nat64
+});
+var AccountIdentifier = blob;
+var SubAccount = blob;
+var BlockIndex = nat64;
+var Memo = nat64;
+var TransferArgs2 = Record2({
+    // Transaction memo.
+    // See comments for the `Memo` type.
+    memo: Memo,
+    // The amount that the caller wants to transfer to the destination address.
+    amount: Tokens,
+    // The amount that the caller pays for the transaction.
+    // Must be 10000 e8s.
+    fee: Tokens,
+    // The subaccount from which the caller wants to transfer funds.
+    // If null, the ledger uses the default (all zeros) subaccount to compute the source address.
+    // See comments for the `SubAccount` type.
+    from_subaccount: Opt2(SubAccount),
+    // The destination account.
+    // If the transfer is successful, the balance of this address increases by `amount`.
+    to: AccountIdentifier,
+    // The point in time when the caller created this request.
+    // If null, the ledger uses current IC time as the timestamp.
+    created_at_time: Opt2(TimeStamp)
+});
+var BadFee2 = Record2({
+    expected_fee: Tokens
+});
+var InsufficientFunds2 = Record2({
+    balance: Tokens
+});
+var TxTooOld = Record2({
+    allowed_window_nanos: nat64
+});
+var TxDuplicate = Record2({
+    duplicate_of: BlockIndex
+});
+var TransferError2 = Variant2({
+    // The fee that the caller specified in the transfer request was not the one that ledger expects.
+    // The caller can change the transfer fee to the `expected_fee` and retry the request.
+    BadFee: BadFee2,
+    // The account specified by the caller doesn't have enough funds.
+    InsufficientFunds: InsufficientFunds2,
+    // The request is too old.
+    // The ledger only accepts requests created within 24 hours window.
+    // This is a non-recoverable error.
+    TxTooOld,
+    // The caller specified `created_at_time` that is too far in future.
+    // The caller can retry the request later.
+    TxCreatedInFuture: Null2,
+    // The ledger has already executed the request.
+    // `duplicate_of` field is equal to the index of the block containing the original transaction.
+    TxDuplicate
+});
+var TransferResult2 = Variant2({
+    Ok: nat64,
+    Err: TransferError2
+});
+var AccountBalanceArgs = Record2({
+    account: AccountIdentifier
+});
+var TransferFeeArg = Record2({});
+var TransferFee = Record2({
+    // The fee to pay to perform a transfer
+    transfer_fee: Tokens
+});
+var GetBlocksArgs = Record2({
+    // The index of the first block to fetch.
+    start: BlockIndex,
+    // Max number of blocks to fetch.
+    length: nat64
+});
+var Mint = Record2({
+    to: AccountIdentifier,
+    amount: Tokens
+});
+var Burn = Record2({
+    from: AccountIdentifier,
+    amount: Tokens
+});
+var Transfer = Record2({
+    from: AccountIdentifier,
+    to: AccountIdentifier,
+    amount: Tokens,
+    fee: Tokens
+});
+var Operation = Variant2({
+    Mint,
+    Burn,
+    Transfer
+});
+var Transaction = Record2({
+    memo: Memo,
+    operation: Opt2(Operation),
+    created_at_time: TimeStamp
+});
+var Block = Record2({
+    parent_hash: Opt2(blob),
+    transaction: Transaction,
+    timestamp: TimeStamp
+});
+var BlockRange = Record2({
+    // A prefix of the requested block range.
+    // The index of the first block is equal to [GetBlocksArgs.from].
+    //
+    // Note that the number of blocks might be less than the requested
+    // [GetBlocksArgs.len] for various reasons, for example:
+    //
+    // 1. The query might have hit the replica with an outdated state
+    //    that doesn't have the full block range yet.
+    // 2. The requested range is too large to fit into a single reply.
+    //
+    // NOTE: the list of blocks can be empty if:
+    // 1. [GetBlocksArgs.len] was zero.
+    // 2. [GetBlocksArgs.from] was larger than the last block known to the canister.
+    blocks: Vec2(Block)
+});
+var BadFirstBlockIndex = Record2({
+    requested_index: BlockIndex,
+    first_valid_index: BlockIndex
+});
+var Other = Record2({
+    error_code: nat64,
+    error_message: text
+});
+var QueryArchiveError = Variant2({
+    // [GetBlocksArgs.from] argument was smaller than the first block
+    // served by the canister that received the request.
+    BadFirstBlockIndex,
+    // Reserved for future use.
+    Other
+});
+var QueryArchiveResult = Variant2({
+    // Successfully fetched zero or more blocks.
+    Ok: BlockRange,
+    // The [GetBlocksArgs] request was invalid.
+    Err: QueryArchiveError
+});
+var QueryArchiveFn = Func2([
+    GetBlocksArgs
+], QueryArchiveResult, "query");
+var ArchivedBlock = Record2({
+    // The index of the first archived block that can be fetched using the callback.
+    start: BlockIndex,
+    // The number of blocks that can be fetch using the callback.
+    length: nat64,
+    // The function that should be called to fetch the archived blocks.
+    // The range of the blocks accessible using this function is given by [from]
+    // and [len] fields above.
+    callback: QueryArchiveFn
+});
+var QueryBlocksResponse = Record2({
+    // The total number of blocks in the chain.
+    // If the chain length is positive, the index of the last block is `chain_len - 1`.
+    chain_length: nat64,
+    // System certificate for the hash of the latest block in the chain.
+    // Only present if `query_blocks` is called in a non-replicated query context.
+    certificate: Opt2(blob),
+    // List of blocks that were available in the ledger when it processed the call.
+    //
+    // The blocks form a contiguous range, with the first block having index
+    // [first_block_index] (see below), and the last block having index
+    // [first_block_index] + len(blocks) - 1.
+    //
+    // The block range can be an arbitrary sub-range of the originally requested range.
+    blocks: Vec2(Block),
+    // The index of the first block in "blocks".
+    // If the blocks vector is empty, the exact value of this field is not specified.
+    first_block_index: BlockIndex,
+    // Encoding of instructions for fetching archived blocks whose indices fall into the
+    // requested range.
+    //
+    // For each entry `e` in [archived_blocks], `[e.from, e.from + len)` is a sub-range
+    // of the originally requested block range.
+    archived_blocks: Vec2(ArchivedBlock)
+});
+var Archive = Record2({
+    canister_id: Principal3
+});
+var Archives = Record2({
+    archives: Vec2(Archive)
+});
+var SymbolResult = Record2({
+    symbol: text
+});
+var NameResult = Record2({
+    name: text
+});
+var DecimalsResult = Record2({
+    decimals: nat32
+});
+var Ledger = Canister({
+    // Transfers tokens from a subaccount of the caller to the destination address.
+    // The source address is computed from the principal of the caller and the specified subaccount.
+    // When successful, returns the index of the block containing the transaction.
+    transfer: update([
+        TransferArgs2
+    ], TransferResult2),
+    // Returns the amount of Tokens on the specified account.
+    account_balance: query([
+        AccountBalanceArgs
+    ], Tokens),
+    // Returns the current transfer_fee.
+    transfer_fee: query([
+        TransferFeeArg
+    ], TransferFee),
+    // Queries blocks in the specified range.
+    query_blocks: query([
+        GetBlocksArgs
+    ], QueryBlocksResponse),
+    // Returns token symbol.
+    symbol: query([], SymbolResult),
+    // Returns token name.
+    name: query([], NameResult),
+    // Returns token decimals.
+    decimals: query([], DecimalsResult),
+    // Returns the existing archive canisters information.
+    archives: query([], Archives),
+    icrc1_metadata: query([], Vec2(Tuple2(text, Value))),
+    icrc1_name: query([], text),
+    icrc1_symbol: query([], text),
+    icrc1_decimals: query([], nat8),
+    icrc1_fee: query([], nat),
+    icrc1_total_supply: query([], nat),
+    icrc1_minting_account: query([], Opt2(Account)),
+    icrc1_balance_of: query([
+        Account
+    ], nat),
+    icrc1_transfer: update([
+        TransferArgs
+    ], TransferResult),
+    icrc1_supported_standards: query([], Vec2(SupportedStandard))
+});
 // src/BlockSpeak_backend/src/index.ts
+var icpCanister = Ledger(Principal3.fromText("ryjl3-tyaaa-aaaaa-aaaba-cai"));
 var src_default = Canister({
     greet: query([
         text
